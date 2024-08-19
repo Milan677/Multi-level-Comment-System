@@ -156,3 +156,75 @@ The goal of this project is to design and implement a set of API endpoints for a
         }
     }
     ```
+### 3.Get Comments for a Specific post API:
+ * This API can return all the comments for a target post.
+ * The endpoint require two query params i.e `sortBy` and `sortOrder`.
+ * You can choose the following fileds for sortBy :
+      - createdAt 
+ * You can choose following for sortOrder :
+   - `asc` for ascending.
+   - `desc` for descending.
+
+ * Endpoint :
+    ```http
+    GET /api/posts/:postId/comments?sortBy=createdAt&sortOrder=asc
+    ```
+   | Parameter | Type        | Example |
+   | --------  | --------    | -------- |
+   | postId    | ObjectID    | 66c0eee4c8cb1ec550460530|
+   
+* Response :
+    ```javascript
+    [
+    {
+        "_id": "66c0f5ae634dbe83c74a86f3",
+        "text": "nice pic",
+        "userId": "66c0efddc8cb1ec550460533",
+        "postId": "66c0eee4c8cb1ec550460530",
+        "parentId": null,
+        "replies": [
+            {
+                "_id": "66c360f8fd5b984a75ee7103",
+                "text": "Thank you for your comment",
+                "createdAt": "2024-08-19T15:12:56.300Z"
+            }
+        ],
+        "createdAt": "2024-08-17T19:10:38.074Z",
+        "__v": 0,
+        "totalReplies": 1
+    },
+    {
+        "_id": "66c0f6e8857de564de78ad21",
+        "text": "very nice pic",
+        "userId": "66c0efddc8cb1ec550460533",
+        "postId": "66c0eee4c8cb1ec550460530",
+        "parentId": null,
+        "replies": [
+            {
+                "_id": "66c1ade87046a7bf65700e0b",
+                "text": "when you are going to gym",
+                "createdAt": "2024-08-18T08:16:40.491Z"
+            },
+            {
+                "_id": "66c1adbe7046a7bf65700e05",
+                "text": "you hve nic muscle",
+                "createdAt": "2024-08-18T08:15:58.148Z"
+            }
+        ],
+        "createdAt": "2024-08-17T19:15:52.531Z",
+        "__v": 0,
+        "totalReplies": 4
+    },
+    {
+        "_id": "66c36c200d08dc8d43eff541",
+        "text": "Feeling very well by looking your post",
+        "userId": "66c0620b2064475de4c12c31",
+        "postId": "66c0eee4c8cb1ec550460530",
+        "parentId": null,
+        "replies": [],
+        "createdAt": "2024-08-19T16:00:32.737Z",
+        "__v": 0,
+        "totalReplies": 0
+    }
+   ]  
+    ``` 
