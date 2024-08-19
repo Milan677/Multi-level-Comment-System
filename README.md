@@ -64,3 +64,28 @@ The goal of this project is to design and implement a set of API endpoints for a
          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmMwNjIwYjIwNjQ0NzVkZTRjMTJjMzEiLCJpYXQiOjE3MjQwODI4MTAsImV4cCI6MTcyNDA5MDAxMH0.uISnR300htxiWn6EYdTCkYw3lOf9QLw6kaH2kCoMbng"
       }
     ```
+## New post creation by user
+* Endpoint :
+    ```http
+    POST /api/create-post
+    ```
+* Request body :
+    ```javascript
+      {
+        "title":"post 3",
+        "content":"This is the content of post 3"
+      }
+    ```
+* Response :
+    ```javascript
+    {
+       "msg": "new post created",
+       "post": {
+            "title": "post 3",
+            "content": "This is the content of post 3",
+            "userId": "66c0620b2064475de4c12c31",
+            "_id": "66c3808bd1c5330fd2500c6d",
+            "__v": 0
+       }
+    }
+    ```    
