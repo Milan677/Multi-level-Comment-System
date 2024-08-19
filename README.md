@@ -172,6 +172,8 @@ The goal of this project is to design and implement a set of API endpoints for a
    | Parameter | Type        | Example |
    | --------  | --------    | -------- |
    | postId    | ObjectID    | 66c0eee4c8cb1ec550460530|
+   | sortBy    | String (optional)   | createdAt |
+   | sortOrder   | String (optional)   | asc or desc|
    
 * Response :
     ```javascript
@@ -239,6 +241,8 @@ The goal of this project is to design and implement a set of API endpoints for a
    | --------     | --------    | -------- |
    | postId       | ObjectID    | 66c0eee4c8cb1ec550460530|
    | commentId    | ObjectID    | 66c0f6e8857de564de78ad21|
+   | page   | Number   | 1|
+   | pageSize   | Number   | 3 |
    
 * Response :
     ```javascript
