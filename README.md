@@ -91,14 +91,14 @@ The goal of this project is to design and implement a set of API endpoints for a
     ```  
 ## Comments APIs :
 
-### Create comment API :
+### 1.Create comment API :
 * Endpoint :
     ```http
     POST /api/posts/:postId/comments
     ```
-| Parameter | Type        | Example |
-| --------  | --------    | -------- |
-| postId    | ObjectID    | 66c0eee4c8cb1ec550460530|
+   | Parameter | Type        | Example |
+   | --------  | --------    | -------- |
+   | postId    | ObjectID    | 66c0eee4c8cb1ec550460530|
 
 
 * Request body :
@@ -116,6 +116,39 @@ The goal of this project is to design and implement a set of API endpoints for a
             "userId": "66c0620b2064475de4c12c31",
             "postId": "66c0eee4c8cb1ec550460530",
             "parentId": null,
+            "replies": [],
+            "_id": "66c36c200d08dc8d43eff541",
+            "createdAt": "2024-08-19T16:00:32.737Z",
+            "__v": 0
+        }
+    }
+    ```
+
+### 2.Reply to Existing Comment API :
+* Endpoint :
+    ```http
+    POST /api/posts/:postId/comments/:commentId/reply
+    ```
+   | Parameter | Type        | Example |
+   | --------  | --------    | -------- |
+   | postId    | ObjectID    | 66c0eee4c8cb1ec550460530|
+   | commentId | ObjectID    | 66c0ffbd6a802612ed71a4bc|
+
+* Request body :
+    ```javascript
+      {
+        "text":"You are osm"
+      }
+    ```
+* Response :
+    ```javascript
+    {
+        "msg": "new comment added",
+        "comment": {
+            "text": "You are osm",
+            "userId": "66c0620b2064475de4c12c31",
+            "postId": "66c0eee4c8cb1ec550460530",
+            "parentId":"66c0ffbd6a802612ed71a4bc",
             "replies": [],
             "_id": "66c36c200d08dc8d43eff541",
             "createdAt": "2024-08-19T16:00:32.737Z",
