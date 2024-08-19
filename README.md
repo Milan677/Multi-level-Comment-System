@@ -88,4 +88,38 @@ The goal of this project is to design and implement a set of API endpoints for a
             "__v": 0
        }
     }
-    ```    
+    ```  
+## Comments APIs :
+
+### Create comment API :
+* Endpoint :
+    ```http
+    POST /api/posts/:postId/comments
+    ```
+| Parameter | Type        | Example |
+| --------  | --------    | -------- |
+| postId    | ObjectID    | 66c0eee4c8cb1ec550460530|
+
+
+* Request body :
+    ```javascript
+      {
+        "text":"Feeling very well by looking your post"
+      }
+    ```
+* Response :
+    ```javascript
+    {
+        "msg": "new comment added",
+        "comment": {
+            "text": "Feeling very well by looking your post",
+            "userId": "66c0620b2064475de4c12c31",
+            "postId": "66c0eee4c8cb1ec550460530",
+            "parentId": null,
+            "replies": [],
+            "_id": "66c36c200d08dc8d43eff541",
+            "createdAt": "2024-08-19T16:00:32.737Z",
+            "__v": 0
+        }
+    }
+    ```
