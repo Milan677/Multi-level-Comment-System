@@ -9,6 +9,7 @@ const cookieParser=require("cookie-parser");
 const{authenticate}=require("./Middlewares/authentication");
 
 
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -19,7 +20,7 @@ app.get('/',(req,res)=>{
 app.use("/api/user",userRouter);
 app.use(authenticate);
 app.get('/api/auth',(req,res)=>{
-    res.send("this is the routes that will open after authentication");
+    res.send("following routes  can accessable only by authenticated users, Thank You");
 })
 app.use("/api",postRouter);
 app.use("/api/posts",commentRouter);

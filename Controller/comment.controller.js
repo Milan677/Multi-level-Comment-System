@@ -56,7 +56,7 @@ const getComment = async (req, res) => {
 
         const comments = await commentModel.find({ postId, parentId: null })
             .sort({ [sortBy]: sortOrder === 'asc' ? 1 : -1 })
-            .populate({ path: "replies", select: { text: 1, createdAt: 1 },   options: { sort: { createdAt: -1 }}} )
+            .populate({ path: "replies", select: { text: 1, createdAt: 1 }, options: { sort: { createdAt: -1 }, limit: 2 } })
             .lean();
 
         //...........adding total replies to each comment document.....................
@@ -90,7 +90,7 @@ const getCommentWithPaggination = async (req, res) => {
         const skip = (page - 1) * limit;
 
         const replies = await commentModel.find({ parentId: commentId })
-            .populate({ path: "replies", select: { text: 1, createdAt: 1 }, options: { sort: { createAt: -1 } } })
+            .populate({ path: "replies", select: { text: 1, createdAt: 1 }, options: { sort: { createAt: -1 }, limit: 2 } })
             .skip(skip).limit(limit).lean();
 
 
@@ -105,4 +105,4 @@ const getCommentWithPaggination = async (req, res) => {
     }
 }
 
-module.exports = { createComment, replyToComment, getComment ,getCommentWithPaggination}
+module.exports = { createComment, replyToComment, getComment, getCommentWithPaggination }

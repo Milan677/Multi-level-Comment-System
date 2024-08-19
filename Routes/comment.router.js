@@ -1,13 +1,15 @@
 const express=require("express");
 const commentRouter=express.Router();
 const{createComment, replyToComment, getComment, getCommentWithPaggination}=require("../Controller/comment.controller")
+const commentRateLimiter=require("../Middlewares/rateLimit");
+
 
 //.....create a comment on specific post.......
-commentRouter.post("/:postId/comments",createComment);
+commentRouter.post("/:postId/comments",commentRateLimiter,createComment);
 //.................................................
 
 //.....reply to a specific post.......
-commentRouter.post("/:postId/comments/:commentId/reply",replyToComment);
+commentRouter.post("/:postId/comments/:commentId/reply",commentRateLimiter,replyToComment);
 //...............................................................
 
 
